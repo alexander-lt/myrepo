@@ -1,35 +1,55 @@
 R Markdown - Test Run
 ================
 Alex
-2026-10-25
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax
-for authoring HTML, PDF, and MS Word documents. For more details on
-using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that
-includes both content as well as the output of any embedded R code
-chunks within the document. You can embed an R code chunk like this:
+2026-10-27
 
 ``` r
-summary(cars)
+library(nycflights13)
 ```
 
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
+    ## Warning: package 'nycflights13' was built under R version 4.4.3
 
-## Including Plots
+``` r
+library(tidyverse)
+```
 
-You can also embed plots, for example:
+    ## Warning: package 'tidyverse' was built under R version 4.4.3
 
-![](test_rmarkdown_files/figure-gfm/pressure-1.png)<!-- -->
+    ## Warning: package 'ggplot2' was built under R version 4.4.3
 
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+    ## Warning: package 'tidyr' was built under R version 4.4.3
+
+    ## Warning: package 'purrr' was built under R version 4.4.3
+
+    ## Warning: package 'dplyr' was built under R version 4.4.3
+
+    ## Warning: package 'forcats' was built under R version 4.4.1
+
+    ## Warning: package 'lubridate' was built under R version 4.4.3
+
+    ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+    ## ✔ dplyr     1.2.1     ✔ readr     2.1.5
+    ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+    ## ✔ ggplot2   4.0.3     ✔ tibble    3.2.1
+    ## ✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+    ## ✔ purrr     1.2.2     
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+    ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+``` r
+test_flight <- flights
+
+ggplot(test_flight, aes(x = dep_delay)) +
+  geom_histogram(binwidth = 10) +
+  xlim(-20, 150)
+```
+
+    ## Warning: Removed 14472 rows containing non-finite outside the scale range
+    ## (`stat_bin()`).
+
+    ## Warning: Removed 2 rows containing missing values or values outside the scale range
+    ## (`geom_bar()`).
+
+![](test_rmarkdown_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
